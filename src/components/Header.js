@@ -2,8 +2,8 @@ import React from 'react';
 import '../App.css';
 
 const Header = (props) => (
-    <div>
-        <h1 className="header">Pokedex Coding Challenge</h1>
+    <div className="header__container">
+        <h1 className="header__title">Pokedex Coding Challenge</h1>
     </div>
 );
 

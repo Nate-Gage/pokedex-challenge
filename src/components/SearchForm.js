@@ -1,9 +1,10 @@
 import React from 'react';
+import '../App.css';
 
 const SearchForm = (props) => {
 
     return (
-        <div>
+        <div className="searchContainer">
             <form onSubmit={props.handleSearch}>
                 <input
                     name="searchInput"
@@ -11,7 +12,7 @@ const SearchForm = (props) => {
                 <button>Search</button>
                 <br />
                 <br />
-                <span>Select Type</span>
+                <span className="search__heading">Select Type</span>
                 <br />
                 <input type="checkbox" className="Bug" onChange={props.handleTypeChange} />Bug
                 <input type="checkbox" className="Dark" onChange={props.handleTypeChange} />Dark
@@ -29,7 +30,7 @@ const SearchForm = (props) => {
                 <input type="checkbox" className="Water" onChange={props.handleTypeChange} />Water
                 <br />
                 <br />
-                <span name="weaknessSelector">Select Weakness</span>
+                <span className="search__heading" name="weaknessSelector">Select Weakness</span>
                 <br />
                 <input type="checkbox" className="Bug" onChange={props.handleWeaknessChange} />Bug
                 <input type="checkbox" className="Dark" onChange={props.handleWeaknessChange} />Dark

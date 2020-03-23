@@ -17,15 +17,16 @@ const PokemonDetails = ({ match }) => {
             return item.name === match.params.name;
         });
         setItem(thePokemon[0]);
+        console.log(thePokemon[0]);
     }
 
     return (
         <div>
             <div className="pokemonDescrip">
-                <h3 className="pokemonDescrip__name">{item.name}</h3>
+                <h3 className="pokemonDescrip__name">{item.name} | {item.num}</h3>
                 <img src={item.img} />
                 <p>Type: {item.type}</p>
-                <p>Weakness: {item.weaknesses}</p>
+                <p>Weaknesses: {item.weaknesses}</p>
             </div>
         </div>
     );

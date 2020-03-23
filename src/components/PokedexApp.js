@@ -40,14 +40,17 @@ class PokedexApp extends React.Component {
     }
     handleSearch = (e) => {
         e.preventDefault();
-        const searchValue = e.target.elements.searchInput.value;
-
-        var xhr = new XMLHttpRequest();
-
-        xhr.addEventListener('load', () => {
-            const response = JSON.parse(xhr.responseText);
+        console.log('line 43');
+        const fetchItems = async () => {
+            const searchValue = e.target.elements.searchInput.value;
             const checkedTypes = this.state.typeFilter;
             const checkedWeakness = this.state.weaknessFilter;
+            console.log('here');
+            const data = await fetch('https://raw.githubusercontent.com/Biuni/PokemonGO-Pokedex/master/pokedex.json'
+            );
+            console.log(data);
+            const response = await data.json();
+            console.log(response);
 
             this.setState(() => ({
                 pokemonArray: response.pokemon.filter((item) => {
@@ -58,9 +61,8 @@ class PokedexApp extends React.Component {
                     }) && item.name.includes(searchValue);
                 })
             }))
-        });
-        xhr.open('GET', 'https://raw.githubusercontent.com/Biuni/PokemonGO-Pokedex/master/pokedex.json');
-        xhr.send();
+        };
+        fetchItems();
         console.log(this.state.pokemonArray);
     }
     render() {

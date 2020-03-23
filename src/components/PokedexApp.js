@@ -1,6 +1,7 @@
 import React from 'react';
+import '../App.css';
 import SearchForm from './SearchForm';
-import PokemonList from './PokemonList'
+import PokemonList from './PokemonList';
 
 class PokedexApp extends React.Component {
     state = {

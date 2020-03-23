@@ -1,13 +1,32 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import '../App.css';
 
-const PokemonDetails = (props) => {
+const PokemonDetails = ({ match }) => {
+    useEffect(() => {
+        fetchItem();
+    }, []);
+
+    const [item, setItem] = useState({});
+
+    const fetchItem = async () => {
+        const fetchItem = await fetch(
+            'https://raw.githubusercontent.com/Biuni/PokemonGO-Pokedex/master/pokedex.json'
+        );
+        const response = await fetchItem.json();
+        const thePokemon = response.pokemon.filter((item) => {
+            return item.name === match.params.name;
+        });
+        setItem(thePokemon[0]);
+    }
 
     return (
         <div>
-            This is the details page. The pokemon's name is {props.name}
-            <br />
-            <Link to="/">Back</Link>
+            <div className="pokemonDescrip">
+                <h3 className="pokemonDescrip__name">{item.name}</h3>
+                <img src={item.img} />
+                <p>Type: {item.type}</p>
+                <p>Weakness: {item.weaknesses}</p>
+            </div>
         </div>
     );
 };

@@ -3,24 +3,24 @@ import '../App.css';
 import { Link } from 'react-router-dom';
 
 const PokemonList = (props) => {
-    const pokemon = props.pokemonArray;
+    const pokemonArray = props.pokemonArray;
 
     return (
         <div>
             <ul>
-                {pokemon.map((item, index) => {
+                {pokemonArray.map((pokemon, index) => {
                     return (
-                        <div>
-                            <li key={index}>
+                        <div key={index}>
+                            <li>
                                 <span>
-                                    <Link to={`/details/${item.name}`}>{item.name}</Link> | Number: {item.num}</span>
+                                    <Link to={`/details/${pokemon.name}`}>{pokemon.name}</Link> | Number: {pokemon.num}</span>
                                 <br />
-                                <span>Type: {item.type.map((value) => {
-                                    return <span>{value} </span>;
+                                <span>Type: {pokemon.type.map((pokemonType) => {
+                                    return <span key={pokemonType}>{pokemonType}</span>;
                                 })}
                                 </span><br />
-                                <span>Weakness: {item.weaknesses.map((value) => {
-                                    return <span>{value} </span>;
+                                <span>Weakness: {pokemon.weaknesses.map((pokemonWeakness) => {
+                                    return <span key={pokemonWeakness}>{pokemonWeakness}</span>;
                                 })}
                                 </span>
                             </li>

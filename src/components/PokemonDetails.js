@@ -4,7 +4,7 @@ import '../App.css';
 const PokemonDetails = ({ match }) => {
     useEffect(() => {
         fetchItem();
-    }, []);
+    });
 
     const [item, setItem] = useState({});
 
@@ -23,7 +23,7 @@ const PokemonDetails = ({ match }) => {
         <div>
             <div className="pokemonDescrip">
                 <h3 className="pokemonDescrip__name">{item.name} | {item.num}</h3>
-                <img src={item.img} />
+                <img src={item.img} alt={item.name} />
                 <p>Type: {item.type}</p>
                 <p>Weaknesses: {item.weaknesses}</p>
             </div>

@@ -17,7 +17,6 @@ const PokemonDetails = ({ match }) => {
             return item.name === match.params.name;
         });
         setItem(thePokemon[0]);
-        console.log(thePokemon[0]);
     }
 
     return (

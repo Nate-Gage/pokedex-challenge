@@ -10,7 +10,7 @@ class PokedexApp extends React.Component {
         weaknessFilter: []
     };
     handleTypeChange = (e) => {
-        var checkedTypes = this.state.typeFilter;
+        const checkedTypes = this.state.typeFilter;
         if (e.target.checked) {
             console.log("Pushing type: " + e.target.className)
             checkedTypes.push(e.target.className)
@@ -25,7 +25,7 @@ class PokedexApp extends React.Component {
         console.log(this.state.typeFilter);
     }
     handleWeaknessChange = (e) => {
-        var checkedWeakness = this.state.weaknessFilter;
+        const checkedWeakness = this.state.weaknessFilter;
         if (e.target.checked) {
             console.log("Pushing weakness: " + e.target.className)
             checkedWeakness.push(e.target.className)
@@ -41,15 +41,12 @@ class PokedexApp extends React.Component {
     }
     handleSearch = (e) => {
         e.preventDefault();
-        console.log('line 43');
         const fetchItems = async () => {
             const searchValue = e.target.elements.searchInput.value;
             const checkedTypes = this.state.typeFilter;
             const checkedWeakness = this.state.weaknessFilter;
-            console.log('here');
             const data = await fetch('https://raw.githubusercontent.com/Biuni/PokemonGO-Pokedex/master/pokedex.json'
             );
-            console.log(data);
             const response = await data.json();
             console.log(response);
 
@@ -59,7 +56,7 @@ class PokedexApp extends React.Component {
                         return (item.type.indexOf(value) >= 0);
                     }) && checkedWeakness.every((value) => {
                         return (item.weaknesses.indexOf(value) >= 0);
-                    }) && item.name.includes(searchValue);
+                    }) && item.name.toLowerCase().includes(searchValue.toLowerCase());
                 })
             }))
         };
